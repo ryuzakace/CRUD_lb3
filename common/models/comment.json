@@ -1,0 +1,61 @@
+{
+  "name": "comment",
+  "plural": "comments",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "blogId": {
+      "type": "number",
+      "required": true
+    },
+    "body": {
+      "type": "string",
+      "required": true
+    },
+    "author": {
+      "type": "string",
+      "required": true
+    },
+    "date": {
+      "type": "date",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "blog": {
+      "type": "belongsTo",
+      "model": "blog",
+      "foreignKey": "blogId"
+    },
+    "user": {
+      "type": "belongsTo",
+      "model": "user",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {
+    "increaselikes": {
+      "accepts": [
+        {
+          "arg": "x",
+          "type": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [],
+      "description": "increases likes count",
+      "http": [
+        {
+          "path": "/increase-likes",
+          "verb": "put"
+        }
+      ]
+    }
+  }
+}

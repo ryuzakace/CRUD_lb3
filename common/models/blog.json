@@ -1,0 +1,45 @@
+{
+  "name": "blog",
+  "plural": "blogs",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "index": {
+        "unique": true
+      }
+    },
+    "content": {
+      "type": "string",
+      "required": true
+    },
+    "author": {
+      "type": "number",
+      "required": true
+    },
+    "dateAdded": {
+      "type": "date",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "comments": {
+      "type": "hasMany",
+      "model": "comment",
+      "foreignKey": ""
+    },
+    "user": {
+      "type": "belongsTo",
+      "model": "user",
+      "foreignKey": "author"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
